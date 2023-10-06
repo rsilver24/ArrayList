@@ -25,7 +25,15 @@ public class ArrayList<T> {
     }
 
     public T get(int i){
-
+        Node nodeValue = new Node();
+        if (i == 0){
+            nodeValue = value1;
+            return (T) nodeValue;
+        }
+        for (int k = 0; k < i; k++) {
+            nodeValue = nodeValue.getChildNode();
+        }
+        return (T) nodeValue.getValue();
     }
 
     public T set(int i, T data){
