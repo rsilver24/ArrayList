@@ -9,6 +9,7 @@ public class ArrayList<T> {
 
     public ArrayList(){
         size = 0;
+        value1 = new Node();
     }
 
     // Methods
@@ -37,7 +38,26 @@ public class ArrayList<T> {
     // Add @ Index Method
 
     public void add(int index, T data){
+        Node newValue = new Node();
+        newValue.setValue(data);
+        Node tempNode = value1;
 
+        if (index == 0){
+            newValue.setParentNode(value1);
+            newValue.setChildNode(value1.getChildNode());
+            value1.getChildNode().setParentNode(newValue);
+            value1.setChildNode(newValue);
+            newValue.setValue(value1.getValue());
+            value1.setValue(data);
+        } else{
+            for (int i = 0; i < index; i++){
+                tempNode = tempNode.getChildNode();
+            } tempNode.getParentNode().setChildNode(newValue);
+            newValue.setParentNode(tempNode.getParentNode());
+            tempNode.setParentNode(newValue);
+            newValue.setChildNode(tempNode);
+            size++;
+        }
     }
 
     // Remove Method
