@@ -56,14 +56,27 @@ public class ArrayList<T> {
             newValue.setParentNode(tempNode.getParentNode());
             tempNode.setParentNode(newValue);
             newValue.setChildNode(tempNode);
-            size++;
-        }
+        } size++;
     }
 
     // Remove Method
 
     public T remove(int index){
+        Node tempNode = value1;
+        T retValue;
 
+        if (index == 0){
+            retValue = (T) value1.getValue();
+            value1 = value1.getChildNode();
+            value1.setParentNode(null);
+        } else{
+            for (int i = 0; i < index; i++){
+                tempNode = tempNode.getChildNode();
+            } retValue = (T) tempNode.getValue();
+            tempNode.getParentNode().setChildNode(tempNode.getChildNode());
+            tempNode.getChildNode().setParentNode(tempNode.getParentNode());
+        } size++;
+        return retValue;
     }
 
     // Get Method
