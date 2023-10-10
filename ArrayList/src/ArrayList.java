@@ -83,7 +83,7 @@ public class ArrayList<T> {
   
     public T get(int index){
         Node nodeValue = new Node();
-        if (i == 0){
+        if (index == 0){
             nodeValue = value1;
             return (T) nodeValue;
         }
