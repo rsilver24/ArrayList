@@ -1,3 +1,5 @@
+// Roan Silver + Brandon Malley     Last Edits: October 10th, 2023
+// Collaborators:
 public class ArrayList<T> {
 
     // Instance Data
@@ -75,17 +77,16 @@ public class ArrayList<T> {
             } retValue = (T) tempNode.getValue();
             tempNode.getParentNode().setChildNode(tempNode.getChildNode());
             tempNode.getChildNode().setParentNode(tempNode.getParentNode());
-        } size++;
+        } size--;
         return retValue;
     }
 
     // Get Method
   
     public T get(int index){
-        Node nodeValue = new Node();
+        Node nodeValue = value1;
         if (index == 0){
-            nodeValue = value1;
-            return (T) nodeValue;
+            return (T) nodeValue.getValue();
         }
         for (int k = 0; k < index; k++) {
             nodeValue = nodeValue.getChildNode();
