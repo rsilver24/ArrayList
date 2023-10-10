@@ -87,7 +87,18 @@ public class ArrayList<T> {
     // Set Method
 
     public T set(int index, T data){
+        Node tempNode = value1;
+        T retValue;
 
+        if (index == 0){
+            retValue = (T) value1.getValue();
+            value1.setValue(data);
+        } else{
+            for (int i = 0; i < index; i++){
+                tempNode = tempNode.getChildNode();
+            } retValue = (T) tempNode.getValue();
+            tempNode.setValue(data);
+        } return retValue;
     }
 
     // Size Method
